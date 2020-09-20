@@ -82,9 +82,7 @@ const MessageProvider = (props) => {
       <div className="content_context">
         {context}
       </div>
-      {closeable? <div className="content_closer" onClick={() => {_timeoutFadeOut(id, duration, () => {
-        _timeoutRemove(id, FADE_TIME);
-      });}}>{closerNode}</div>: []}
+      {closeable? <div className="content_closer" onClick={() => {_removeMessage(queue.children[0].id);}}>{closerNode}</div>: []}
     </Notice>), document.getElementById(id));
   };
 

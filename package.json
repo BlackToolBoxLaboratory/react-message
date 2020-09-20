@@ -1,7 +1,7 @@
 {
   "name": "@blacktoolbox/react-message",
   "packageName": "btblab-react-message",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Message / Notice maker based on React.",
   "keywords": [
     "blacktoolbox",
