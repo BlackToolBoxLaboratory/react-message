@@ -1,3 +1,15 @@
+## v1.1.1
+
+> Sep, 27, 2020
+
+- **Issue**: Fix bug for close message should be done to self notice.
+
+## v1.1.0
+
+> Sep, 27, 2020
+
+- **Minor**: Add parameters to control transition in/out time.
+
 ## v1.0.1
 
 > Sep, 20, 2020

@@ -9,10 +9,12 @@ Using with [NPM](https://www.npmjs.com/):
     $ npm install --save @blacktoolbox/react-message
 
     // using ES6 modules
-    import Menu from '@blacktoolbox/react-message';
+    import { MessageProvider, Notice, useMessage } from '@blacktoolbox/react-message';
 
     // using CommonJS modules
-    var Menu = require('@blacktoolbox/react-message');
+    var MessageProvider = require('@blacktoolbox/react-message').MessageProvider;
+    var Notice = require('@blacktoolbox/react-message').Notice;
+    var useMessage = require('@blacktoolbox/react-message').useMessage;
 
 # Issue
 

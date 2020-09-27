@@ -6,14 +6,14 @@ import Notice from './Notice.jsx';
 import QueueConext from './QueueContext.jsx';
 
 const QUEUE_LIMITATION = 5;
-const FADE_TIME = 0.3 * 1000;
+const TRANSITIONE_TIME = 0.3 * 1000;
 const DURATION_TIME = 3 * 1000;
 const HORIZONTAL_POSITION = 'cneter'; // left, center, right
 const VERTIAL_POSITION = 'top'; // top, middle, bottom
 const CLOSEABLE_ENABLE = false;
 
 const MessageProvider = (props) => {
-  const { children, limit = QUEUE_LIMITATION, duration = DURATION_TIME, horizontal = HORIZONTAL_POSITION, vertical = VERTIAL_POSITION, closeable = CLOSEABLE_ENABLE } = props;
+  const { children, limit = QUEUE_LIMITATION, transitionInDuration=TRANSITIONE_TIME, transitionOutDuration=transitionInDuration, duration = DURATION_TIME, horizontal = HORIZONTAL_POSITION, vertical = VERTIAL_POSITION, closeable = CLOSEABLE_ENABLE } = props;
   const refQueue = useRef();
   const timeoutQueue = {};
 
@@ -60,11 +60,11 @@ const MessageProvider = (props) => {
 
   const _messageLifeCycle = (id) => {
     _clearTimeoutQueue(id);
-    _timeoutFadeIn(id, FADE_TIME, () => {
+    _timeoutFadeIn(id, transitionInDuration, () => {
       if (duration > 0)
       {
         _timeoutFadeOut(id, duration, () => {
-          _timeoutRemove(id, FADE_TIME);
+          _timeoutRemove(id, transitionOutDuration);
         });
       }
     });
@@ -82,7 +82,7 @@ const MessageProvider = (props) => {
       <div className="content_context">
         {context}
       </div>
-      {closeable? <div className="content_closer" onClick={() => {_removeMessage(queue.children[0].id);}}>{closerNode}</div>: []}
+      {closeable? <div className="content_closer" onClick={() => {_removeMessage(id);}}>{closerNode}</div>: []}
     </Notice>), document.getElementById(id));
   };
 
