@@ -37,9 +37,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BlackToolBoxLaboratory/react-button/issues"
+    "url": "https://github.com/BlackToolBoxLaboratory/react-message/issues"
   },
-  "homepage": "https://blacktoolboxlaboratory.github.io/react/v2/#/packages/button",
+  "homepage": "https://blacktoolboxlaboratory.github.io/react/v2/#/packages/message",
   "peerDependencies": {
     "react": "^16.8.0"
   },
