@@ -13,7 +13,7 @@ const VERTIAL_POSITION = 'top'; // top, middle, bottom
 const CLOSEABLE_ENABLE = false;
 
 const MessageProvider = (props) => {
-  const { children, limit = QUEUE_LIMITATION, transitionInDuration=TRANSITIONE_TIME, transitionOutDuration=transitionInDuration, duration = DURATION_TIME, horizontal = HORIZONTAL_POSITION, vertical = VERTIAL_POSITION, closeable = CLOSEABLE_ENABLE } = props;
+  const { children, limit = QUEUE_LIMITATION, transitionInDuration = TRANSITIONE_TIME, transitionOutDuration = transitionInDuration, duration = DURATION_TIME, horizontal = HORIZONTAL_POSITION, vertical = VERTIAL_POSITION, closeable = CLOSEABLE_ENABLE } = props;
   const refQueue = useRef();
   const timeoutQueue = {};
 
@@ -32,7 +32,7 @@ const MessageProvider = (props) => {
     queue.children[id].remove();
   };
 
-  const _timeoutFadeIn = (id, time, callback = () => {}) => {
+  const _timeoutFadeIn = (id, time, callback = () => { }) => {
     _clearTimeoutQueue(id);
     timeoutQueue[id] = setTimeout(function countDown() {
       const queue = refQueue.current;
@@ -41,7 +41,7 @@ const MessageProvider = (props) => {
     }, time);
   };
 
-  const _timeoutFadeOut = (id, time, callback = () => {}) => {
+  const _timeoutFadeOut = (id, time, callback = () => { }) => {
     _clearTimeoutQueue(id);
     timeoutQueue[id] = setTimeout(function countDown() {
       const queue = refQueue.current;
@@ -50,7 +50,7 @@ const MessageProvider = (props) => {
     }, time);
   };
 
-  const _timeoutRemove = (id, time, callback = () => {}) => {
+  const _timeoutRemove = (id, time, callback = () => { }) => {
     _clearTimeoutQueue(id);
     timeoutQueue[id] = setTimeout(function countDown() {
       _removeMessage(id);
@@ -61,8 +61,7 @@ const MessageProvider = (props) => {
   const _messageLifeCycle = (id) => {
     _clearTimeoutQueue(id);
     _timeoutFadeIn(id, transitionInDuration, () => {
-      if (duration > 0)
-      {
+      if (duration > 0) {
         _timeoutFadeOut(id, duration, () => {
           _timeoutRemove(id, transitionOutDuration);
         });
@@ -78,11 +77,11 @@ const MessageProvider = (props) => {
     messageContainer.id = id;
     messageContainer.classList.add('message_container');
     queue.append(messageContainer);
-    render((<Notice {...noticeProps} className={classnames(className, "container_content")}> 
+    render((<Notice {...noticeProps} className={classnames(className, "container_content")}>
       <div className="content_context">
         {context}
       </div>
-      {closeable? <div className="content_closer" onClick={() => {_removeMessage(id);}}>{closerNode}</div>: []}
+      {closeable ? <div className="content_closer" onClick={() => { _removeMessage(id); }}>{closerNode}</div> : []}
     </Notice>), document.getElementById(id));
   };
 
@@ -90,7 +89,7 @@ const MessageProvider = (props) => {
     const queue = refQueue.current;
     const { type = 'normal', context = 'No message left.', closerNode = (<>&#x2716;</>) } = data;
     const messageData = {
-      id : `message_${Date.now()}_${Math.ceil(Math.random() * 1000)}`,
+      id: `message_${Date.now()}_${Math.ceil(Math.random() * 1000)}`,
       type,
       context,
       closerNode
@@ -103,7 +102,7 @@ const MessageProvider = (props) => {
   };
 
   return (
-    <QueueConext.Provider value={{ send : _sendMessage }}>
+    <QueueConext.Provider value={{ send: _sendMessage }}>
       <div className={classnames("btb-react-message", classList)} ref={refQueue} />
       {children}
     </QueueConext.Provider>
