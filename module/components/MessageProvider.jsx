@@ -89,7 +89,7 @@ const MessageProvider = (props) => {
     const queue = refQueue.current;
     const { type = 'normal', context = 'No message left.', closerNode = (<>&#x2716;</>) } = data;
     const messageData = {
-      id: `message_${Date.now()}_${Math.ceil(Math.random() * 1000)}`,
+      id : `message_${Date.now()}_${Math.ceil(Math.random() * 1000)}`,
       type,
       context,
       closerNode
@@ -102,7 +102,7 @@ const MessageProvider = (props) => {
   };
 
   return (
-    <QueueConext.Provider value={{ send: _sendMessage }}>
+    <QueueConext.Provider value={{ send : _sendMessage }}>
       <div className={classnames("btb-react-message", classList)} ref={refQueue} />
       {children}
     </QueueConext.Provider>
